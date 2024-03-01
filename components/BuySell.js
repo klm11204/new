@@ -18,9 +18,9 @@ export default function BuySell() {
     await ether.buyBYF(input1);
    };
 
-   const sell = async (event) => { 
-    await ether.sellBYF(input1);
-   };
+   //const sell = async (event) => { 
+    //await ether.sellBYF(input1);
+  // };
 
   useEffect(() => {
     (async () => {
