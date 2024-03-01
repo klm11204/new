@@ -1,0 +1,33 @@
+{
+  "name": "nextjs-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "nextstart",
+    "lint": "next lint",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
+    "build:tailwind": "tailwind build styles/globals.css -o styles/tailwind.css"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.320",
+    "@tailwindcss/forms": "^0.3.3",
+    "antd": "^4.16.13",
+    "cross-env": "^7.0.3",
+    "ethers": "^5.4.7",
+    "next": "^13.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-multi-carousel": "^2.6.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.5",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "postcss": "^8.3.8",
+    "tailwindcss": "^2.2.15"
+  }
+}

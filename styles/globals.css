@@ -1,0 +1,60 @@
+@import '~antd/dist/antd.css';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+ @font-face {
+  font-family: "dalek";
+  font-weight: 400;
+  src: url(/fonts/dalek_pinpoint/DalekPinpointBold.ttf);
+ }
+
+ @font-face {
+  font-family: "augustus";
+  font-weight: 400;
+  src: url(/fonts/achilles/achilles3gradital.ttf);
+ }
+
+ @font-face {
+  font-family: "montserrat";
+  font-weight: 400;
+  src: url(/fonts/montserrat.ttf);
+ }
+
+ @font-face {
+  font-family: "capitalis";
+  font-weight: 400;
+  src: url(/fonts/capitalis_typoasis/CapitalisTypOasis.ttf);
+ }
+
+  @font-face {
+      font-family: "nextsunday";
+      font-weight: 400;
+      src: url(/fonts/nextsunday/NextSunday.ttf);
+  }
+
+   @font-face {
+       font-family: "supermilk";
+       font-weight: 400;
+       src: url(/fonts/supermilk/SuperMilk.ttf);
+   }
+
+   @font-face {
+    font-family: "inter";
+    font-weight: 400;
+    src: url(/fonts/Inter-VariableFont_slnt,wght.ttf);
+}
+
+@font-face {
+    font-family: "overpass";
+    font-weight: 100;
+    src: url(/fonts/overpass/Overpass-VariableFont_wght.ttf);
+}
+
+html{
+    scroll-behavior: smooth;
+}
