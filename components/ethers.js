@@ -96,7 +96,7 @@ export const connect = async () => {
                     console.error(err);
                     if(isMobileDevice(true)){
                         var newPageLink = document.createElement('a');
-                        newPageLink.href = 'help.js'; // Assuming your new page is in a file named newpage.html
+                        newPageLink.href = 'help.js'; 
                         newPageLink.textContent = 'Visit New Page';
                         mainContainer.appendChild(newPageLink);
                     }
