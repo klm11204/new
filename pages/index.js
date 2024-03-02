@@ -10,6 +10,7 @@ import Raffle from "../components/Raffle";
 import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
 import BuySell from "../components/BuySell";
+import mainContainer from "../components/help";
 import { React, useEffect, useState } from "react";
 
 var ether = require("../components/ethers");
@@ -34,6 +35,21 @@ export default function Home() {
    const sell = async (event) => { 
     await ether.sellBYF(input1);
    };
+  
+  function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Check if it's a mobile device
+  if (isMobileDevice()) {
+    // Redirect to the help page for mobile devices
+    window.location.href = 'help.js'; // Change to 'help.html' or the actual path of your help HTML file
+  }
+  }
+});
+
+
    useEffect(() => {
     (async () => {
       if (typeof window.ethereum === "undefined") {
