@@ -117,7 +117,7 @@ export default function BuySell() {
                           >
                             Buy
                           </button>
-{/*  <button
+ <button
                             className="rounded-lg font-bold uppercase px-3 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                             type="button"
                             id="mint"
@@ -126,7 +126,7 @@ export default function BuySell() {
                           >
                             Sell
 
-                          </button>*/}
+                          </button>
                         </div>
                       </div>
                       
