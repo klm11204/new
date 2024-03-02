@@ -1,10 +1,9 @@
-// newpage.js
+// help.js
 
-document.addEventListener('DOMContentLoaded', function () {
+function HelpComponent() {
   // Add video player
   var videoContainer = document.createElement('div');
   videoContainer.innerHTML = '<iframe width="560" height="315" src="https://youtube.com/shorts/n0p9mrbqex4?feature=share" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-  document.body.appendChild(videoContainer);
 
   // Add description
   var description = document.createElement('div');
@@ -17,5 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
                           '<li>Hit buy.</li>' +
                           '</ol>' +
                           '<p>Note: You should have some Ethereum to buy 🪙</p>';
-  document.body.appendChild(description);
+
+  // Create the main container and append the video and description
+  var mainContainer = document.createElement('div');
+  mainContainer.appendChild(videoContainer);
+  mainContainer.appendChild(description);
+
+  return mainContainer;
+}
+
+// Execute the HelpComponent function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  var helpComponent = HelpComponent();
+  document.body.appendChild(helpComponent);
 });
