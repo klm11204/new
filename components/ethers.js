@@ -24,6 +24,13 @@ const openNotificationWithIcon = (type, message, desc) => {
   });
 };
 
+function isMobileDevice() {
+  // Add your logic here to detect if the user is on a mobile device
+  // This can be done by checking the user agent string or using libraries like Modernizr
+  // For simplicity, I'll assume a basic check
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 export const listenmetamaskchange = async () => {
   if (typeof ethereum != "undefined") {
     window.ethereum.on("accountsChanged", handleAccountsChanged);
@@ -32,6 +39,7 @@ export const listenmetamaskchange = async () => {
       "error",
       "Error",
       "Web3 wallet not detected. Install Metamask or TrustWallet to use this website."
+      
     );
   }
 };
@@ -47,6 +55,7 @@ function handleAccountsChanged(accounts) {
     openNotificationWithIcon("success", "Connected to Address", currentAccount);
   }
 }
+
 
 export const listenmetamaskchangenotif = async () => {
   if (typeof ethereum !== "undefined") {
