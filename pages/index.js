@@ -10,7 +10,6 @@ import Raffle from "../components/Raffle";
 import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
 import BuySell from "../components/BuySell";
-import mainContainer from "../components/help";
 import { React, useEffect, useState } from "react";
 
 var ether = require("../components/ethers");
@@ -36,18 +35,25 @@ export default function Home() {
     await ether.sellBYF(input1);
    };
   
-  function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   // Check if it's a mobile device
   if (isMobileDevice()) {
     // Redirect to the help page for mobile devices
-    window.location.href = 'help.js'; // Change to 'help.html' or the actual path of your help HTML file
-  }
+    window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
+  } 
+  else {
+    var mainContainer = document.createElement('div');
+    mainContainer.id = 'main-container';
+    document.body.appendChild(mainContainer);
   }
 });
+
+function isMobileDevice() {
+  // Add your logic here to detect if the user is on a mobile device
+  // This can be done by checking the user agent string or using libraries like Modernizr
+  // For simplicity, I'll assume a basic check
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
 
    useEffect(() => {
