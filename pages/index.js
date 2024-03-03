@@ -31,8 +31,8 @@ function isMobileDevice() {
       // Redirect to the help page for mobile devices
       window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
     }
-    else{
-      const [openTab, setOpenTab] = useState(1);
+  }, []);
+    const [openTab, setOpenTab] = useState(1);
   const [rate, setRate] = useState();
   const [rate2, setRate2] = useState();
   const [input1, setInput1] = useState("");
@@ -281,7 +281,5 @@ function isMobileDevice() {
   );
 }
 
-    }
-  }, []);
 
   
