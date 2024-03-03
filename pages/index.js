@@ -1,5 +1,6 @@
+// index.js
+
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import Navbar from "../components/NavBar";
@@ -11,16 +12,27 @@ import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
 import BuySell from "../components/BuySell";
 import { React, useEffect, useState } from "react";
-
-var ether = require("../components/ethers");
+import { notification } from "antd";
+import ether from "../components/ethers";
 
 export default function Home() {
   const openNotificationWithIcon = (type, message, desc) => {
     notification[type]({
-        message: message,
-        description: desc,
+      message: message,
+      description: desc,
     });
-};
+  };
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+  // Mobile redirection logic
+  useEffect(() => {
+    if (isMobileDevice()) {
+      // Redirect to the help page for mobile devices
+      window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
+    }
+  }, []);
+
   const [openTab, setOpenTab] = useState(1);
   const [rate, setRate] = useState();
   const [rate2, setRate2] = useState();
@@ -29,33 +41,11 @@ export default function Home() {
 
   const buy = async (event) => { 
     await ether.buyBYF(input1);
-   };
+  };
 
-   const sell = async (event) => { 
+  const sell = async (event) => { 
     await ether.sellBYF(input1);
-   };
-  
-document.addEventListener('DOMContentLoaded', function () {
-  // Check if it's a mobile device
-  if (isMobileDevice()) {
-    // Redirect to the help page for mobile devices
-    window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
-  } 
-  else {
-    var mainContainer = document.createElement('div');
-    mainContainer.id = 'main-container';
-    document.body.appendChild(mainContainer);
-  }
-});
-
-function isMobileDevice() {
-  // Add your logic here to detect if the user is on a mobile device
-  // This can be done by checking the user agent string or using libraries like Modernizr
-  // For simplicity, I'll assume a basic check
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-
+  };
    useEffect(() => {
     (async () => {
       if (typeof window.ethereum === "undefined") {
