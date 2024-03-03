@@ -1,6 +1,7 @@
-// index.js
+//index.js
 
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import Navbar from "../components/NavBar";
@@ -12,18 +13,16 @@ import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
 import BuySell from "../components/BuySell";
 import { React, useEffect, useState } from "react";
-import { notification } from "antd";
-import ether from "../components/ethers";
+
+var ether = require("../components/ethers");
 
 export default function Home() {
   const openNotificationWithIcon = (type, message, desc) => {
     notification[type]({
-      message: message,
-      description: desc,
+        message: message,
+        description: desc,
     });
-  };
-
-  
+};
   const [openTab, setOpenTab] = useState(1);
   const [rate, setRate] = useState();
   const [rate2, setRate2] = useState();
@@ -32,11 +31,11 @@ export default function Home() {
 
   const buy = async (event) => { 
     await ether.buyBYF(input1);
-  };
+   };
 
-  const sell = async (event) => { 
+   const sell = async (event) => { 
     await ether.sellBYF(input1);
-  };
+   };
    useEffect(() => {
     (async () => {
       if (typeof window.ethereum === "undefined") {
@@ -202,7 +201,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
                 {/* <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                   <div className="text-blueGray-400 text-center mb-3 font-bold"></div>
                   <form>
@@ -273,6 +271,3 @@ export default function Home() {
     </>
   );
 }
-
-
-  
