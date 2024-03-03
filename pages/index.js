@@ -28,6 +28,17 @@ export default function Home() {
   const [rate2, setRate2] = useState();
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
+  
+        function isMobileDevice() {
+                  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                }
+                // Mobile redirection logic
+                useEffect(() => {
+                  if (isMobileDevice()) {
+                  // Redirect to the help page for mobile devices
+                  window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
+                 }
+                }, []);
 
   const buy = async (event) => { 
     await ether.buyBYF(input1);
