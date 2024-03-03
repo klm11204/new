@@ -202,16 +202,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                function isMobileDevice() {
-                  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                }
-                // Mobile redirection logic
-                useEffect(() => {
-                  if (isMobileDevice()) {
-                  // Redirect to the help page for mobile devices
-                  window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
-                 }
-                }, []);
+
                 {/* <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                   <div className="text-blueGray-400 text-center mb-3 font-bold"></div>
                   <form>
