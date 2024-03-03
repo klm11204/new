@@ -1,26 +1,52 @@
+// Import the necessary modules
+import Script from "next/script";
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Help</title>
-</head>
-<body>
-  <div id="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=b3HN2wzIdj0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+// Inside your component's JSX
+<div className="your-video-container">
+  <Script strategy="beforeInteractive">
+    {`
+      // Load the YouTube iframe API
+      if (typeof window !== 'undefined') {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }
+    `}
+  </Script>
+  <div id="youtube-player"></div>
 
-  <div id="description">
-    <p>How to buy BYF coin 🪙 follow the steps below:</p>
-    <ol>
-      <li>Go to Metamask Wallet.</li>
-      <li>Type in the browser of Metamask <a href="https://byfcoin.net" target="_blank">byfcoin.net</a></li>
-      <li>Connect your wallet by clicking on the connect button.</li>
-      <li>Type the coin's quantity.</li>
-      <li>Hit buy.</li>
-    </ol>
-    <p>Note: You should have some Ethereum to buy 🪙</p>
-  </div>
-</body>
-</html>
+  <Script strategy="afterInteractive">
+    {`
+      // Create an instance of the YouTube player
+      let player;
+
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player', {
+          height: '360',
+          width: '640',
+          videoId: 'b3HN2wzIdj0',
+          playerVars: {
+            // Optional parameters
+            autoplay: 0, // Set to 1 for autoplay
+            controls: 1, // Show video controls
+            loop: 0, // Set to 1 for loop
+          },
+          events: {
+            // Optional events
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      }
+
+      function onPlayerReady(event) {
+        // Perform actions when the player is ready
+      }
+
+      function onPlayerStateChange(event) {
+        // Perform actions when the player state changes
+      }
+    `}
+  </Script>
+</div>
