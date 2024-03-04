@@ -30,25 +30,6 @@ export default function Home() {
   const [input2, setInput2] = useState("");
   
 
-  function isMoblile(){
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }
-
-
-if (isMobile(true)) {
-    // Check if MetaMask is installed
-    const { ethereum } = window;
-    if (!ethereum) {
-        // Display a message to install MetaMask
-        const installMessage = document.createElement('div');
-        installMessage.textContent = 'Please install MetaMask to use this website.';
-        document.body.appendChild(installMessage);
-    } else {
-        // Redirect to the MetaMask browser
-        window.location.href = 'metamaskapp://open-url?url=http:www.byfcoin.net';
-    }
-}
-
   const buy = async (event) => { 
     await ether.buyBYF(input1);
    };
