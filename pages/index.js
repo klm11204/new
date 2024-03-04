@@ -37,6 +37,27 @@ export default function Home() {
    const sell = async (event) => { 
     await ether.sellBYF(input1);
    };
+  
+  function redirectToMetaMask() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Check if the user is on a mobile device
+    if (/android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent)) {
+        // Try to open MetaMask using the deep link
+        window.location.href = metaMaskDeepLink;
+
+        // If the user doesn't have MetaMask installed, provide a fallback link
+        setTimeout(function () {
+            window.location.href = 'https://metamask.io/download.html';
+        }, 1000);
+    } else {
+        // If not on a mobile device, provide a generic link to your website
+        window.location.href = 'https://your-website-url.com';
+    }
+}
+
+// Call the redirection function on page load
+redirectToMetaMask();
    useEffect(() => {
     (async () => {
       if (typeof window.ethereum === "undefined") {
