@@ -29,16 +29,21 @@ export default function Home() {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   
-        function isMobileDevice() {
-                  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                }
-                // Mobile redirection logic
-                useEffect(() => {
-                  if (isMobileDevice()) {
-                  // Redirect to the help page for mobile devices
-                  window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
-                 }
-                }, []);
+  
+// Check if the user is on a mobile device
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (isMobile) {
+    // Redirect to the MetaMask browser if installed
+    if (window.ethereum && window.ethereum.isMetaMask) {
+        window.location.href = 'metamaskapp://open-url?url=https://yourwebsite.com';
+    } else {
+        // Display a message to install MetaMask
+        const installMessage = document.createElement('div');
+        installMessage.innerText = 'Please install MetaMask to use this website.';
+        document.body.appendChild(installMessage);
+    }
+}
 
   const buy = async (event) => { 
     await ether.buyBYF(input1);
