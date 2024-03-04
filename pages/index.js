@@ -65,7 +65,7 @@ export default function Home() {
         window.location.href = 'https://metamask.io/download.html';
       }, 1000);
     } else {
-      window.location.href = 'https://your-website-url.com';
+      window.location.href = 'http://www.byfcoin.net';
     }
   };
 
