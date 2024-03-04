@@ -28,17 +28,6 @@ export default function Home() {
   const [rate2, setRate2] = useState();
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
-  
-        function isMobileDevice() {
-                  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                }
-                // Mobile redirection logic
-                useEffect(() => {
-                  if (isMobileDevice()) {
-                  // Redirect to the help page for mobile devices
-                  window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
-                 }
-                }, []);
 
   const buy = async (event) => { 
     await ether.buyBYF(input1);
@@ -47,6 +36,14 @@ export default function Home() {
    const sell = async (event) => { 
     await ether.sellBYF(input1);
    };
+
+
+  <div id="popup-window">
+  <h1>Pop-up Window</h1>
+ window.location.href = 'help.html'; 
+  <button id="close-button">Close</button>
+</div>       
+  
    useEffect(() => {
     (async () => {
       if (typeof window.ethereum === "undefined") {
