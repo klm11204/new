@@ -29,11 +29,13 @@ export default function Home() {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   
-  
-// Check if the user is on a mobile device
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-if (isMobile) {
+  function isMoblile(){
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+
+if (isMobile(true)) {
     // Check if MetaMask is installed
     const { ethereum } = window;
     if (!ethereum) {
