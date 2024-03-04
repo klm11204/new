@@ -36,6 +36,12 @@ export default function Home() {
     await ether.sellBYF(input1);
    };
   
+  if (typeof navigator !== "undefined") {
+  // Your code that uses navigator
+  redirectToMetaMask();
+}
+
+  
   function redirectToMetaMask() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
