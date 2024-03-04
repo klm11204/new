@@ -1,5 +1,3 @@
-//index.js
-
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,8 +11,8 @@ import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
 import BuySell from "../components/BuySell";
 import { React, useEffect, useState } from "react";
-
-var ether = require("../components/ethers");
+import ether from "../components/ethers";
+import { notification } from 'antd';
 
 export default function Home() {
   const openNotificationWithIcon = (type, message, desc) => {
