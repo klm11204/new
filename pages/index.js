@@ -36,7 +36,7 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 if (isMobile) {
     // Redirect to the MetaMask browser if installed
     if (window.ethereum && window.ethereum.isMetaMask) {
-        window.location.href = 'metamaskapp://open-url?url=https://yourwebsite.com';
+        window.location.href = 'metamaskapp://open-url?url=www.byfcoin.net';
     } else {
         // Display a message to install MetaMask
         const installMessage = document.createElement('div');
