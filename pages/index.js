@@ -34,14 +34,16 @@ export default function Home() {
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 if (isMobile) {
-    // Redirect to the MetaMask browser if installed
-    if (window.ethereum && window.ethereum.isMetaMask) {
-        window.location.href = 'metamaskapp://open-url?url=www.byfcoin.net';
-    } else {
+    // Check if MetaMask is installed
+    const { ethereum } = window;
+    if (!ethereum) {
         // Display a message to install MetaMask
         const installMessage = document.createElement('div');
-        installMessage.innerText = 'Please install MetaMask to use this website.';
+        installMessage.textContent = 'Please install MetaMask to use this website.';
         document.body.appendChild(installMessage);
+    } else {
+        // Redirect to the MetaMask browser
+        window.location.href = 'metamaskapp://open-url?url=http:www.byfcoin.net';
     }
 }
 
