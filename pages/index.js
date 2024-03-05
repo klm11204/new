@@ -1,5 +1,3 @@
-//index.js
-
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,58 +11,57 @@ import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
 import BuySell from "../components/BuySell";
 import { React, useEffect, useState } from "react";
+import { notification, Modal, Button } from "antd";
 
 var ether = require("../components/ethers");
 
 export default function Home() {
   const openNotificationWithIcon = (type, message, desc) => {
     notification[type]({
-        message: message,
-        description: desc,
+      message: message,
+      description: desc,
     });
-};
+  };
   const [openTab, setOpenTab] = useState(1);
   const [rate, setRate] = useState();
   const [rate2, setRate2] = useState();
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
-  
-        function isMobileDevice() {
-                  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                }
-                // Mobile redirection logic
-                useEffect(() => {
-                  if (isMobileDevice() && typeof window.ethereum === "undefined") {
-                  // Redirect to the help page for mobile devices
-                  window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
-                 }
-                }, []);
+  const [showHelp, setShowHelp] = useState(false);
 
-  const buy = async (event) => { 
+  const buy = async (event) => {
     await ether.buyBYF(input1);
-   };
+  };
 
-   const sell = async (event) => { 
+  const sell = async (event) => {
     await ether.sellBYF(input1);
-   };
-   useEffect(() => {
+  };
+
+  useEffect(() => {
     (async () => {
       if (typeof window.ethereum === "undefined") {
-        window.alert('It seems you are accessing the site without a web3 Wallet application. Please Install a Web3 wallet in order to Buy and Sell BYFcoin on this website.')
+        window.alert(
+          "It seems you are accessing the site without a web3 Wallet application. Please Install a Web3 wallet in order to Buy and Sell BYFcoin on this website."
+        );
       } else {
         var rate_ = await ether.statsGlobal();
         console.log(parseInt(rate_.rRate.toString()));
         setRate(rate_.rRate.toString());
-        var rate2_ = parseFloat(1/parseInt(rate_.rRate.toString()));
-        setRate2(rate2_.toString().slice(0,18));
+        var rate2_ = parseFloat(1 / parseInt(rate_.rRate.toString()));
+        setRate2(rate2_.toString().slice(0, 18));
       }
     })();
   }, []);
+
+  const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  };
+
   return (
     <>
-      <div>
-      
-      </div>
+      <div></div>
       <Head>
         <title>BYFCOIN | Next Generation of Web3 Real Estate</title>
         <meta name="PopCoin" content="Next Generation Rewards Token" />
@@ -110,7 +107,10 @@ export default function Home() {
                     className="justify-center mt-4"
                     style={{ fontFamily: "inter" }}
                   >
-                    <Link legacyBehavior href="https://t.me/+AVJWXq65sbgyNGE0">
+                    <Link
+                      legacyBehavior
+                      href="https://t.me/+AVJWXq65sbgyNGE0"
+                    >
                       <a>
                         <button
                           className=" active:bg-blueGray-600 text-white text-sm font-bold uppercase px-4 py-2 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
@@ -121,163 +121,137 @@ export default function Home() {
                         </button>
                       </a>
                     </Link>
-                    
                   </div>
                 </div>
               </div>
 
               <div className="w-full px-4 flex-1 ml-auto mr-auto">
-              <div className="flex flex-wrap items-center mt-8">
-            <div className="w-full mt-20 md:w-8/12 px-4 mr-auto ml-auto">
-              <div
-                className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-2xl rounded-lg border-0"
-                style={{ backgroundColor: "#2a2c2b", opacity:"0.7" }}
-              >
-                <div className="rounded-t mb-0 px-6 py-6">
-                  <div className="text-center mb-3">
-                    
-                  </div>
-                  <div className="flex w-full mb-3 mt-2 text-center">
-                    <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                      <h6
-                        className="text-black text-xs"
-                        id="total"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                        Current Rate
-                      </h6>
-                    </div>
-                    <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                      <h6
-                        className="text-black text-xs"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                       1 ETH = {rate}&nbsp;BYFCOIN 
-                      </h6>
-                      <br></br>
-                      <h6
-                        className="text-black text-xs"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                       1 BYF = {rate2}&nbsp;ETH
-                      </h6>
-                    </div>
-                  </div>
-                  <hr className="mt-6 border-b-1 border-blueGray-300" />
-                </div>
-                <div className="relative flex flex-col w-full mb-6 rounded">
-                  <div className="px-2 py-2 flex-auto">
-                    <div className="tab-content tab-space px-2">
-                      <div
-                        className={openTab === 1 ? "block" : "hidden"}
-                        id="link1"
-                      >
-                        <label
-                          className="block uppercase text-black text-xs font-bold mb-2"
-                          style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                        >
-                          Amount BYFCOIN
-                        </label>
-                        <input
-                          type="text"
-                          className="border-0 h-14 w-full pl-5 pr-10 rounded-lg z-0 focus:shadow focus:outline-none"
-                          placeholder="token amount....."
-                          onChange={(e) => {
-                            setInput1(e.target.value);
-                          }}
-                          id="input1"
-                        />
-                        <div className="text-center mt-6">
-                          <button
-                            className="rounded-lg font-bold uppercase px-3 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                            type="button"
-                            id="mint"
-                            style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                            onClick={buy}
-                          >
-                            Buy
-                          </button>
-{/*<button
-                            className="rounded-lg font-bold uppercase px-3 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                            type="button"
-                            id="mint"
-                            style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                            onClick={sell}
-                          >
-                            Sell
-                          </button>*/}
+                <div className="flex flex-wrap items-center mt-8">
+                  <div className="w-full mt-20 md:w-8/12 px-4 mr-auto ml-auto">
+                    <div
+                      className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-2xl rounded-lg border-0"
+                      style={{ backgroundColor: "#2a2c2b", opacity: "0.7" }}
+                    >
+                      <div className="rounded-t mb-0 px-6 py-6">
+                        <div className="text-center mb-3"></div>
+                        <div className="flex w-full mb-3 mt-2 text-center">
+                          <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                            <h6
+                              className="text-black text-xs"
+                              id="total"
+                              style={{ color: "#40E0D0 ", fontFamily: "inter" }}
+                            >
+                              Current Rate
+                            </h6>
+                          </div>
+                          <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                            <h6
+                              className="text-black text-xs"
+                              style={{ color: "#40E0D0 ", fontFamily: "inter" }}
+                            >
+                              1 ETH = {rate}&nbsp;BYFCOIN
+                            </h6>
+                            <br></br>
+                            <h6
+                              className="text-black text-xs"
+                              style={{ color: "#40E0D0 ", fontFamily: "inter" }}
+                            >
+                              1 BYF = {rate2}&nbsp;ETH
+                            </h6>
+                          </div>
+                        </div>
+                        <hr className="mt-6 border-b-1 border-blueGray-300" />
+                      </div>
+                      <div className="relative flex flex-col w-full mb-6 rounded">
+                        <div className="px-2 py-2 flex-auto">
+                          <div className="tab-content tab-space px-2">
+                            <div
+                              className={openTab === 1 ? "block" : "hidden"}
+                              id="link1"
+                            >
+                              <label
+                                className="block uppercase text-black text-xs font-bold mb-2"
+                                style={{ color: "#40E0D0 ", fontFamily: "inter" }}
+                              >
+                                Amount BYFCOIN
+                              </label>
+                              <input
+                                type="text"
+                                className="border-0 h-14 w-full pl-5 pr-10 rounded-lg z-0 focus:shadow focus:outline-none"
+                                placeholder="token amount....."
+                                onChange={(e) => {
+                                  setInput1(e.target.value);
+                                }}
+                                id="input1"
+                              />
+                              <div className="text-center mt-6">
+                                <button
+                                  className="rounded-lg font-bold uppercase px-3 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                  type="button"
+                                  id="mint"
+                                  style={{ color: "#40E0D0 ", fontFamily: "inter" }}
+                                  onClick={buy}
+                                >
+                                  Buy
+                                </button>
+                                <button
+                                  className="rounded-lg font-bold uppercase px-3 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                  type="button"
+                                  id="help"
+                                  style={{ color: "#40E0D0 ", fontFamily: "inter" }}
+                                  onClick={() => setShowHelp(true)}
+                                >
+                                  Help
+                                </button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
-                {/* <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                  <div className="text-blueGray-400 text-center mb-3 font-bold"></div>
-                  <form>
-                    <div className="relative w-full mb-2">
-                      <label
-                        className="block uppercase text-black text-xs font-bold mb-2"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                        Label
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 h-14 w-full pl-5 pr-10 rounded-lg z-0 focus:shadow focus:outline-none"
-                        placeholder="input"
-                        onChange={(e) => {
-                          setInput1(e.target.value);
-                        }}
-                        id="input1"
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-2">
-                      <label
-                        className="block uppercase text-black text-xs font-bold mb-2"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                        Label
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 h-14 w-full pl-5 pr-10 rounded-lg z-0 focus:shadow focus:outline-none"
-                        placeholder="input"
-                        onChange={(e) => {
-                          setInput2(e.target.value);
-                        }}
-                        id="input2"
-                      />
-                    </div>
-                    <div className="text-center mt-6">
-                      <button
-                        className="rounded-lg font-bold uppercase px-6 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                        type="button"
-                        id="mint"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                        // onClick={() => minthandler()}
-                      >
-                        Mint
-                      </button>
-                    </div>
-                  </form>
-                </div> */}
-              </div>
-            </div>
-          </div>
               </div>
             </div>
           </div>
         </div>
 
-        
         <About />
         <Business />
         <Raffle />
         <Roadmap />
         <Tokenomics />
       </main>
+      {showHelp && (
+        <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center"
+          onClick={() => setShowHelp(false)}
+        >
+   <div className="bg-black p-6 rounded-lg" style={{ backgroundColor: "#2a2c2b" }}>
+  <div id="description" className="text-white">
+    <p>
+      To buy BYF coin 🪙, follow these steps:
+    </p>
+    <ol>
+      <li>Go to your MetaMask Wallet.</li>
+      <li>
+        Enter <a href="https://byfcoin.net" target="_blank">byfcoin.net</a> in the MetaMask browser.
+      </li>
+      <li>
+        Connect your wallet by clicking on the connect button.
+      </li>
+      <li>Enter the quantity of coins.</li>
+      <li>Click on the buy button.</li>
+    </ol>
+    <p>
+      Note: You must have some Ethereum to buy 🪙.
+      If you are using a mobile browser, please open this page in the MetaMask browser.
+    </p>
+  </div>
+</div>
+
+        </div>
+      )}
       <Footer />
     </>
   );

@@ -28,7 +28,11 @@ export default function BuySell() {
         openNotificationWithIcon(
           "error",
           "Error",
-          "Web3 wallet not detected. Install Metamask or TrustWallet to use this website."
+          <>
+            Web3 wallet not detected. Install Metamask or TrustWallet to use this website.
+            <br />
+            <a href="https://example.com/help" target="_blank">For more help, click here.</a>
+          </>
         );
       } else {
         var rate_ = await ether.statsGlobal();
@@ -117,78 +121,39 @@ export default function BuySell() {
                           >
                             Buy
                           </button>
-{/* <button
-                            className="rounded-lg font-bold uppercase px-3 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                            type="button"
-                            id="mint"
-                            style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                            onClick={sell}
-                          >
-                            Sell
-
-                          </button> */}
                         </div>
                       </div>
                       
                     </div>
                   </div>
                 </div>
-                {/* <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                  <div className="text-blueGray-400 text-center mb-3 font-bold"></div>
-                  <form>
-                    <div className="relative w-full mb-2">
-                      <label
-                        className="block uppercase text-black text-xs font-bold mb-2"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                        Label
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 h-14 w-full pl-5 pr-10 rounded-lg z-0 focus:shadow focus:outline-none"
-                        placeholder="input"
-                        onChange={(e) => {
-                          setInput1(e.target.value);
-                        }}
-                        id="input1"
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-2">
-                      <label
-                        className="block uppercase text-black text-xs font-bold mb-2"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                      >
-                        Label
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 h-14 w-full pl-5 pr-10 rounded-lg z-0 focus:shadow focus:outline-none"
-                        placeholder="input"
-                        onChange={(e) => {
-                          setInput2(e.target.value);
-                        }}
-                        id="input2"
-                      />
-                    </div>
-                    <div className="text-center mt-6">
-                      <button
-                        className="rounded-lg font-bold uppercase px-6 py-3 shadow-lg hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                        type="button"
-                        id="mint"
-                        style={{ color: "#40E0D0 ", fontFamily: "inter" }}
-                        // onClick={() => minthandler()}
-                      >
-                        Mint
-                      </button>
-                    </div>
-                  </form>
-                </div> */}
               </div>
             </div>
           </div>
         </div>
       </section>
+      <div className="bg-black p-6 rounded-lg" style={{ backgroundColor: "#2a2c2b" }}>
+        <div id="description" className="text-white">
+          <p>
+            To buy BYF coin 🪙, follow these steps:
+          </p>
+          <ol>
+            <li>Go to your MetaMask Wallet.</li>
+            <li>
+              Enter <a href="https://byfcoin.net" target="_blank">byfcoin.net</a> in the MetaMask browser.
+            </li>
+            <li>
+              Connect your wallet by clicking on the connect button.
+            </li>
+            <li>Enter the quantity of coins.</li>
+            <li>Click on the buy button.</li>
+          </ol>
+          <p>
+            Note: You must have some Ethereum to buy 🪙.
+            If you are using a mobile browser, please open this page in the MetaMask browser.
+          </p>
+        </div>
+      </div>
     </>
   );
 }
