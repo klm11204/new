@@ -37,12 +37,8 @@ export default function Home() {
     await ether.sellBYF(input1);
    };
 
-
-  <div id="popup-window">
-  <h1>Pop-up Window</h1>
- window.open = 'help.html'; 
-  <button id="close-button">Close</button>
-</div>       
+    const helpPageUrl = 'help.html';
+    const popupWindow = window.open(helpPageUrl, '_blank', 'width=400,height=300');
   
    useEffect(() => {
     (async () => {
