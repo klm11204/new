@@ -228,11 +228,6 @@ export default function Home() {
           onClick={() => setShowHelp(false)}
         >
    <div className="bg-black p-6 rounded-lg" style={{ backgroundColor: "#2a2c2b" }}>
-        <head> 
-        <video width="360" height="640" controls>
-    <source src="/public/helpVideo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
   <div id="description" className="text-white">
     <p>
       To buy BYF coin 🪙, follow these steps:
@@ -252,13 +247,12 @@ export default function Home() {
       Note: You must have some Ethereum to buy 🪙.
       If you are using a mobile browser, please open this page in the MetaMask browser.
     </p>
-        </head>
   </div>
 </div>
 
         </div>
       )}
-      <Footer />
+      <Footer/>
     </>
   );
 }
