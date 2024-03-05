@@ -1,3 +1,5 @@
+//index.js
+
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,68 +11,54 @@ import Business from "../components/Businessplan";
 import Raffle from "../components/Raffle";
 import Roadmap from "../components/Roadmap";
 import Tokenomics from "../components/Tokenomics";
+import BuySell from "../components/BuySell";
 import { React, useEffect, useState } from "react";
-import ether from "../components/ethers";
-import { notification } from 'antd';
+
+var ether = require("../components/ethers");
 
 export default function Home() {
   const openNotificationWithIcon = (type, message, desc) => {
     notification[type]({
-      message: message,
-      description: desc,
+        message: message,
+        description: desc,
     });
-  };
-
+};
   const [openTab, setOpenTab] = useState(1);
   const [rate, setRate] = useState();
   const [rate2, setRate2] = useState();
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
+  
+        function isMobileDevice() {
+                  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                }
+                // Mobile redirection logic
+                useEffect(() => {
+                  if (isMobileDevice() && typeof window.ethereum === "undefined") {
+                  // Redirect to the help page for mobile devices
+                  window.location.href = 'help.html'; // Change to 'help.html' or the actual path of your help HTML file
+                 }
+                }, []);
 
-  const buy = async (event) => {
-    // Check if input1 is not empty
-    if (!input1) {
-      openNotificationWithIcon('error', 'Error', 'Please enter a valid amount.');
-      return;
-    }
+  const buy = async (event) => { 
+    await ether.buyBYF(input1);
+   };
 
-    try {
-      // Perform your buy logic here
-      // For the sake of this example, let's assume the buy logic is successful
-
-      // Open the pop-up window
-      const helpPageUrl = 'help.html';
-      const popupWindow = window.open(helpPageUrl, '_blank', 'width=400,height=300');
-
-      // You can customize the window features (width, height, etc.) as needed
-
-      // Notify the user about the successful buy
-      openNotificationWithIcon('success', 'Success', 'Buy successful!');
-
-    } catch (error) {
-      console.error("Error during buy:", error);
-      openNotificationWithIcon('error', 'Error', 'An error occurred during the buy process.');
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (typeof window.ethereum === "undefined") {
-          window.alert('It seems you are accessing the site without a web3 Wallet application. Please Install a Web3 wallet in order to Buy and Sell BYFcoin on this website.')
-        } else {
-          const rate_ = await ether.statsGlobal();
-          console.log(parseInt(rate_.rRate.toString()));
-          setRate(rate_.rRate.toString());
-          const rate2_ = parseFloat(1 / parseInt(rate_.rRate.toString()));
-          setRate2(rate2_.toString().slice(0, 18));
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+   const sell = async (event) => { 
+    await ether.sellBYF(input1);
+   };
+   useEffect(() => {
+    (async () => {
+      if (typeof window.ethereum === "undefined") {
+        window.alert('It seems you are accessing the site without a web3 Wallet application. Please Install a Web3 wallet in order to Buy and Sell BYFcoin on this website.')
+      } else {
+        var rate_ = await ether.statsGlobal();
+        console.log(parseInt(rate_.rRate.toString()));
+        setRate(rate_.rRate.toString());
+        var rate2_ = parseFloat(1/parseInt(rate_.rRate.toString()));
+        setRate2(rate2_.toString().slice(0,18));
       }
-    };
-
-    fetchData();
+    })();
   }, []);
   return (
     <>
