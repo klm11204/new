@@ -94,12 +94,6 @@ export const connect = async () => {
                     openNotificationWithIcon("error", "EIP-1193 userRejectedRequest");
                 } else {
                     console.error(err);
-                    if(isMobileDevice(true)){
-                        var newPageLink = document.createElement('a');
-                        newPageLink.href = 'help.js'; 
-                        newPageLink.textContent = 'Visit New Page';
-                        mainContainer.appendChild(newPageLink);
-                    }
                 }
             });
     } else console.log("Error", "Install Metamask to use this website");
