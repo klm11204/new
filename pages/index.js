@@ -40,7 +40,7 @@ export default function Home() {
 
   <div id="popup-window">
   <h1>Pop-up Window</h1>
- window.location.href = 'help.html'; 
+ window.open = 'help.html'; 
   <button id="close-button">Close</button>
 </div>       
   
