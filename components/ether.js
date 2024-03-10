@@ -126,7 +126,7 @@ export const mintPass = async (numnft) => {
       } catch (err) {
         if (currentAccount !== null) {
           console.log("Error: ", err.error.message);
-          openNotificationWithIcon("error", "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
+          openNotificationWithIcon("error", err.error.message);
         }
       }
     } else {
@@ -134,7 +134,7 @@ export const mintPass = async (numnft) => {
     }
   } else {
     console.log("Error", "Install Metamask to use this website");
-    openNotificationWithIcon("error", "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
+    openNotificationWithIcon("error", err.error.message);
   }
 };
 
@@ -149,7 +149,7 @@ export const mintBadge = async () => {
     } catch (err) {
       if (currentAccount !== null) {
         console.log("Error: ", err.error.message);
-        openNotificationWithIcon("error", "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
+        openNotificationWithIcon("error", err.error.message);
       }
     }
   } else {
