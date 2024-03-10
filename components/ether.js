@@ -134,7 +134,7 @@ export const mintPass = async (numnft) => {
     }
   } else {
     console.log("Error", "Install Metamask to use this website");
-    openNotificationWithIcon("error", err.error.message);
+    openNotificationWithIcon("error", "Install Metamask to use this website.");
   }
 };
 
