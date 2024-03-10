@@ -133,9 +133,8 @@ export const mintPass = async (numnft) => {
       openNotificationWithIcon("error", "Only Number Allowed per transaction.");
     }
   } else {
-    alert(err.data.message);
     console.log("Error", "Install Metamask to use this website");
-    openNotificationWithIcon("error", err.error.message);
+    openNotificationWithIcon("error", "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
   }
 };
 
