@@ -1,4 +1,4 @@
-Fimport { ethers } from "ethers";
+import { ethers } from "ethers";
 import { notification } from "antd";
 
 // abi of our contract (Should be inserted inline)
