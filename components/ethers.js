@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+Fimport { ethers } from "ethers";
 import { notification } from "antd";
 
 // abi of our contract (Should be inserted inline)
@@ -205,7 +205,7 @@ export const setrwallet = async (wallet) => {
             openNotificationWithIcon("error", "EIP-1193 userRejectedRequest");
         }
         console.log("Error: ", err);
-        openNotificationWithIcon("error", err.error.message);
+        openNotificationWithIcon("error",  "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
     }
 };
 
