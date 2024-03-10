@@ -125,7 +125,6 @@ export const mintPass = async (numnft) => {
         openNotificationWithIcon("success", "Minted", numnft);
       } catch (err) {
         if (currentAccount !== null) {
-          alert(err.data.message);
           console.log("Error: ", err.error.message);
           openNotificationWithIcon("error", err.error.message);
         }
@@ -134,6 +133,7 @@ export const mintPass = async (numnft) => {
       openNotificationWithIcon("error", "Only Number Allowed per transaction.");
     }
   } else {
+    alert(err.data.message);
     console.log("Error", "Install Metamask to use this website");
     openNotificationWithIcon("error", err.error.message);
   }
