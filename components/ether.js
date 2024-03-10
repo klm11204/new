@@ -149,11 +149,11 @@ export const mintBadge = async () => {
     } catch (err) {
       if (currentAccount !== null) {
         console.log("Error: ", err.error.message);
-        openNotificationWithIcon("error", err.error.message);
+        openNotificationWithIcon("error", err.error.message, "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
       }
     }
   } else {
     console.log("Error", "Install Metamask to use this website");
-    openNotificationWithIcon("error", "Install Metamask to use this website.", "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.");
+    openNotificationWithIcon("error", "Install Metamask to use this website.");
   }
 };
