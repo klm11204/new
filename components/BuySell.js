@@ -27,7 +27,7 @@ export default function BuySell() {
       if (typeof window.ethereum === "undefined") {
         openNotificationWithIcon(
           "error",
-          "Error",
+          "Go to your MetaMask Wallet. Enter byfcoin.net in the MetaMask browser. Connect your wallet by clicking on the connect button.",
           <>
             Web3 wallet not detected. Install Metamask or TrustWallet to use this website.
             <br />
