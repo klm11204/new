@@ -52,7 +52,7 @@ export default function About() {
                 >
                   Contract : 
                   <br/>
-                  <span className="text-xs" style={{ fontFamily: "montserrat" }}>0xbb6f6f1a22b3a5e93ebdf2ad001ed740b12695bc</span>
+                  <span className="text-xs" style={{ fontFamily: "montserrat", textTransform: "lowercase" }}>0xbb6f6f1a22b3a5e93ebdf2ad001ed740b12695bc</span>
                   <br/>
                   <br/>
                   Initial Sale : <span style={{ fontFamily: "overpass" }}>100,000,000</span>&nbsp;<span style={{ color: "#32c1d1" }}>BYFs</span>
